@@ -1,0 +1,96 @@
+#ifndef RIVAL_H
+#define RIVAL_H
+
+#include <string>
+
+class Players;
+class Searching;
+class GiveBoosts;
+
+class RivalSystem{
+ private: 
+    Players* players;
+    Searching* searching;
+    GiveBoosts* give_boosts;
+
+ public:
+    RivalSystem();
+
+    void activate();
+    void collect();
+    void search();
+
+
+
+
+};
+
+class Players{
+
+    public:
+    virtual void collect();
+};
+
+class SameState : public Players{
+    public:
+        void collect() override;
+};
+
+class SameCity : public Players{
+    public:
+        void collect() override;
+};
+
+class Searching{
+
+    public:
+    virtual void search();
+
+};
+
+class State : public Searching{
+    public:
+    void search() override;
+
+};
+
+class City : public Searching{
+    public:
+    void search() override;
+
+};
+    
+class PlayerBase : public Searching{
+    public:
+    void search() override;
+
+};
+
+class GiveBoosts{
+
+    public:
+    virtual void activate();
+
+};
+
+class TwoPlayers : public GiveBoosts{
+    public:
+    void activate() override;
+
+};
+
+class TwoCoaches : public GiveBoosts{
+    public:
+    void activate() override;
+
+};
+
+class TwoTeams : public GiveBoosts{
+    public:
+    void activate() override;
+
+};
+
+
+
+#endif
